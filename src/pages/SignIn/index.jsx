@@ -1,5 +1,39 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+    const navigate = useNavigate();
+    const [nickname,setNickname] = useState("");
+    const [password, setPassword] = useState("");
+    
+    const handleChangeNickname = (e)=>{
+        setNickname(e.target.value)
+    }
+
+    const handleChangePassword = (e)=>{
+        setPassword(e.target.value)
+    }    
+    const PUBLIC_API_URL = "http://localhost:3000"
+    const validSignIn = ()=>{
+        fetch(`${PUBLIC_API_URL}/api/auth/signin`, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nickname: nickname,
+              password:password
+            }),
+          })
+          .then((data)=>{
+            if (data.ok) {
+                navigate("/login")
+            }
+            throw new Error("Something went wrong");
+          })
+        .catch((error)=>{console.log(error)})
+    }
 
     return (
 <div className="hero min-h-screen w-full bg-base-200">
@@ -14,16 +48,16 @@ function SignIn() {
           <label className="label">
             <span className="label-text">Pseudo</span>
           </label>
-          <input type="text" placeholder="pseudo" className="input input-bordered" />
+          <input type="text" value={nickname} onChange={handleChangeNickname} placeholder="pseudo" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Mot de passe</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input type="text" value={password} onChange={handleChangePassword} placeholder="password" className="input input-bordered" />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">sign in</button>
+          <button onClick={validSignIn} className="btn btn-primary">sign in</button>
         </div>
       </div>
     </div>
