@@ -4,15 +4,14 @@ function Board() {
 
     return (
 <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content text-center">
-    <div className="max-w-md">
+  <div className="flex w-full text-center p-[20px]">
+    <div className="flex flex-col w-full ">
       <h1 className="text-5xl font-bold">Mes tâches</h1>
 
 
-<div>
-<TodoItem title={"kjhsedkfjhk"} description={"akuhzdoaujf aiozejia dtgselrdgt rlmgkjsmpoekgtrmlsekg ùmrdokp erktùêkottg emrtkypmoektr eoerktyo "} status={"pending"}/>
 
-</div>
+<TodoItem title={"kjhsedkfjhk"} description={"akuhzdoaujf aiozejia dtgselrdgt rlmgkjsmpoekgtrmlsekg ùmrdokp erktùêkottg emrtkypmoektr eoerktyo "} status={"pending"}/>
+<TodoItem title={"kjhsedkfjhk"} description={"akuhzdoaujf aiozejia dtgselrdgt rlmgkjsmpoekgtrmlsekg ùmrdokp erktùêkottg emrtkypmoektr eoerktyo "} status={"done"}/>
 
 
     </div>

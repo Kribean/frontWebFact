@@ -11,10 +11,7 @@ import LogIn from './pages/LogIn';
 
 function App() {
   return (
-    <div className="App">
-       <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="container mx-auto">
     <Routes>
 <Route path="/" element={<HomePage/>}></Route>
 <Route path="/signin" element={<SignIn/>}></Route>
