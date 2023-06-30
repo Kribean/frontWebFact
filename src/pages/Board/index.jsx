@@ -46,7 +46,7 @@ useEffect(()=>{
     tabTodos
     .filter((element)=>element.state==="pending")
     .map((element)=>{
-return <TodoItem title={element.title} description={element.description} state={element.state} id={element._id} key={element._id}/>
+return <TodoItem title={element.title}  state={element.state} id={element._id} key={element._id}/>
     })
 
 }
@@ -54,7 +54,7 @@ return <TodoItem title={element.title} description={element.description} state={
     tabTodos
     .filter((element)=>element.state==="done")
     .map((element)=>{
-return <TodoItem title={element.title} description={element.description} state={element.state} id={element._id} key={element._id}/>
+return <TodoItem title={element.title} state={element.state} id={element._id} key={element._id}/>
 })
     
 }

@@ -16,8 +16,7 @@ function TodoItem(props) {
   <span>{props.state}</span>
 </div>
   <div className="card-body">
-    <h2 className="card-title">{props.title}</h2>
-    <p className="truncate text-ellipsis">{props.description}</p>
+    <h2 className="card-title truncate text-ellipsis">{props.title}</h2>
   </div>
 <div className="flex flex-row justify-end item-center m-4">
 <button onClick={()=>{goToItem()}} className="btn btn-info m-2">Accéder</button>
