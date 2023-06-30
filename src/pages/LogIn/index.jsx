@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function LogIn() {
     const navigate = useNavigate();
     const [nickname,setNickname] = useState("");
@@ -39,7 +40,10 @@ function LogIn() {
     }
     
     return (
+<>
+<Link to={"/"} className="btn btn-neutral w-[200px] m-5" >Accueil</Link>
 <div className="hero min-h-screen bg-base-200">
+
   <div className="hero-content flex-col lg:flex-row-reverse w-full">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Log In</h1>
@@ -60,12 +64,13 @@ function LogIn() {
           <input type="text" value={password} onChange={handleChangePassword} placeholder="password" className="input input-bordered" />
         </div>
         <div className="form-control mt-6">
-          <button onClick={createProfil} className="btn btn-primary">log in</button>
+          <button onClick={()=>{createProfil()}} className="btn btn-primary">log in</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+</>
     );
   }
   

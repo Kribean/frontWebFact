@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignIn() {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function SignIn() {
     }    
     const PUBLIC_API_URL = "http://localhost:3000"
     const validSignIn = ()=>{
-        fetch(`${PUBLIC_API_URL}/api/auth/signin`, {
+        fetch(`${PUBLIC_API_URL}/api/auth/signup`, {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -36,6 +37,8 @@ function SignIn() {
     }
 
     return (
+<>
+<Link to={"/"} className="btn btn-neutral w-[200px] m-5" >Accueil</Link>
 <div className="hero min-h-screen w-full bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse w-full">
     <div className="text-center lg:text-left">
@@ -63,6 +66,7 @@ function SignIn() {
     </div>
   </div>
 </div>
+</>
     );
   }
   

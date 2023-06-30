@@ -1,19 +1,52 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 function Todo() {
+  const navigate = useNavigate();
+  const params = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [isChanged, setIsChanged] = useState(false);
 
+
   const validateData = ()=>{
-    setIsChanged(false)
+    
+    const token = localStorage.getItem("WebFactoryToken")
+    fetch(`${PUBLIC_API_URL}/api/todo/${params.id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body:JSON.stringify({
+      description:description
+    })
+  })
+    .then((data) => { setIsChanged(false);console.log("Objet modifié")})
+    .catch((error)=>console.log(error))
   };
 
   const modifyData = ()=>{
     setIsChanged(true)
   }
 
+const deleteTodo = ()=>{
+  const token = localStorage.getItem("WebFactoryToken")
+  fetch(`${PUBLIC_API_URL}/api/todo/${params.id}`, {
+  method: "DELETE",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  }
+})
+  .then((data) => { navigate("/board");console.log("todo supprimé")})
+  .catch((error)=>console.log(error))
+}
+
+//change status of th todo by watching the value of the switch
   const changeStatus = (e)=>{
     if(e.target.checked)
     {
@@ -21,14 +54,46 @@ function Todo() {
     }else{
         setStatus("pending")
     }
-    console.log(e.target.value,'llllll')
+    const token = localStorage.getItem("WebFactoryToken")
+    fetch(`${PUBLIC_API_URL}/api/todo/${params.id}/state`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body:JSON.stringify({
+      state:(e.target.checked?"done":"pending")
+    })
+  })
+    .then((data) => {console.log("Objet modifié")})
+    .catch((error)=>console.log(error))
   }
 
+  const PUBLIC_API_URL = "http://localhost:3000";
   useEffect(() => {
-    setTitle("ichi");
-    setDescription("lsjflsjf sfglkqfsdg");
-    setStatus("pending");
-  }, []);
+    const token = localStorage.getItem("WebFactoryToken")
+    fetch(`${PUBLIC_API_URL}/api/todo/${params.id}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((data) => {
+      if (data.ok) {
+        return data.json();
+      }
+      throw new Error("Something went wrong");
+    })
+    .then((data)=>{
+        setTitle(data.title);
+        setDescription(data.description);
+        setStatus(data.state);
+    }
+    ).catch((error)=>console.log(error))
+},[])
 
   return (
     <div className="container mx-auto bg-base-200">
@@ -50,7 +115,7 @@ function Todo() {
             ) : (
               <button className="btn btn-primary m-5" onClick={modifyData}>Modifier</button>
             )}
-            <button className="btn btn-error m-5">Supprimer</button>
+            <button onClick={()=>{deleteTodo()}} className="btn btn-error m-5">Supprimer</button>
           </div>
         </div>
       </div>

@@ -17,11 +17,10 @@ function TodoItem(props) {
 </div>
   <div className="card-body">
     <h2 className="card-title">{props.title}</h2>
-    <p>{props.description}</p>
+    <p className="truncate text-ellipsis">{props.description}</p>
   </div>
 <div className="flex flex-row justify-end item-center m-4">
 <button onClick={()=>{goToItem()}} className="btn btn-info m-2">Accéder</button>
-<button className="btn btn-error m-2">Supprimer</button>
 </div>
 </div>
     );
