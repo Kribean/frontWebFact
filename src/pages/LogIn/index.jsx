@@ -55,16 +55,16 @@ function LogIn() {
           <label className="label">
             <span className="label-text">Pseudo</span>
           </label>
-          <input type="text" value={nickname} onChange={handleChangeNickname} placeholder="pseudo" className="input input-bordered" />
+          <input type="text" value={nickname} onChange={handleChangeNickname} placeholder="pseudo" className="input input-bordered" id="nickname" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Mot de passe</span>
           </label>
-          <input type="text" value={password} onChange={handleChangePassword} placeholder="password" className="input input-bordered" />
+          <input type="text" value={password} onChange={handleChangePassword} placeholder="password" className="input input-bordered" id="password" />
         </div>
         <div className="form-control mt-6">
-          <button onClick={()=>{createProfil()}} className="btn btn-primary">log in</button>
+          <button onClick={()=>{createProfil()}} className="btn btn-primary" id="log">log in</button>
         </div>
       </div>
     </div>

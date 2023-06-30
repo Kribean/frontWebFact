@@ -40,7 +40,7 @@ useEffect(()=>{
     <div className="flex flex-col w-full ">
       <h1 className="text-5xl font-bold">Mes tâches</h1>
       <div className="flex flex-row w-full justify-end mr-5">
-      <button className="btn btn-secondary w-[200px]" onClick={()=>{setShowModal(true)}}>Ajouter une todo</button>
+      <button id="create" className="btn btn-secondary w-[200px]" onClick={()=>{setShowModal(true)}}>Ajouter une todo</button>
       </div>
 {
     tabTodos

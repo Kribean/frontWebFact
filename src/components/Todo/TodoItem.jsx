@@ -7,7 +7,7 @@ function TodoItem(props) {
         navigate(`/todo/${props.id}`)
     }
     return (
-<div className="card w-96 bg-base-100 shadow-xl m-5">
+<div className="card w-96 bg-base-100 shadow-xl m-5 todo-item">
 <div className={(props.state==="pending"?"alert-info":"alert-success")+ " alert "}>
   {props.status==="done"?<svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
   :

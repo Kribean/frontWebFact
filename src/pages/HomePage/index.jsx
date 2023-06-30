@@ -10,8 +10,8 @@ function HomePage() {
       <h1 className="text-5xl font-bold">Webfactory</h1>
       <p className="py-6">Bienvenue sur votre todo liste</p>
 <div className="flex flex-col lg:flex-row justify-center item-center">
-<Link to="/login" className="btn btn-primary m-5">Login</Link>
-      <Link to="/signin" className="btn btn-success m-5">Sign in</Link>
+<Link to="/login" className="btn btn-primary m-5" id="login">Login</Link>
+      <Link to="/signin" className="btn btn-success m-5" id="signin">Sign in</Link>
 </div>
     </div>
   </div>
