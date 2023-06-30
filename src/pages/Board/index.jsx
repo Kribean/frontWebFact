@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Board() {
     const [tabTodos,setTabTodos]=useState([]);
     const [showModal, setShowModal] = useState(false);
-const PUBLIC_API_URL = "http://localhost:3000";
+const PUBLIC_API_URL = "https://app-webfactory-c43470404cd5.herokuapp.com";
 
 useEffect(()=>{
 

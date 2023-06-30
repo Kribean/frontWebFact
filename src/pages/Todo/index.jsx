@@ -75,7 +75,7 @@ function Todo() {
       .catch((error) => console.log(error));
   };
 
-  const PUBLIC_API_URL = "http://localhost:3000";
+  const PUBLIC_API_URL = "https://app-webfactory-c43470404cd5.herokuapp.com";
   useEffect(() => {
     const token = localStorage.getItem("WebFactoryToken");
     fetch(`${PUBLIC_API_URL}/api/todo/${params.id}`, {

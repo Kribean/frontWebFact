@@ -15,7 +15,7 @@ function Modal(props) {
   const saveTodo = () => {
     if (title.length > 0) {
       props.setShowModal(false);
-      const PUBLIC_API_URL = "http://localhost:3000";
+      const PUBLIC_API_URL = "https://app-webfactory-c43470404cd5.herokuapp.com";
       const token = localStorage.getItem("WebFactoryToken");
       fetch(`${PUBLIC_API_URL}/api/todo`, {
         method: "POST",

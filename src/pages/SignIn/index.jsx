@@ -14,7 +14,7 @@ function SignIn() {
     const handleChangePassword = (e)=>{
         setPassword(e.target.value)
     }    
-    const PUBLIC_API_URL = "http://localhost:3000"
+    const PUBLIC_API_URL = "https://app-webfactory-c43470404cd5.herokuapp.com"
     const validSignIn = ()=>{
         fetch(`${PUBLIC_API_URL}/api/auth/signup`, {
             method: "POST",
